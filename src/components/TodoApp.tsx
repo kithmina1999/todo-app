@@ -47,7 +47,7 @@ const TodoApp = () => {
                         onChange={(e) => setNewTodo(e.target.value)}
                         placeholder="Enter a new todo"
                     />
-                    <Button onClick={handleAddTodo} className='bg-emerald-500 text-white'>Add</Button>
+                    <Button onClick={handleAddTodo} type='text' className='bg-emerald-500 text-white'>Add</Button>
                 </div>
 
                 {/* Todo list rendering */}
@@ -68,7 +68,7 @@ const TodoApp = () => {
                                 </span>
                             </div>
                             <Button
-
+                                type='text'
                                 className='bg-destructive text-white hover:bg-destructive/50'
                                 onClick={() => handleDeleteTodo(todo.id)}
                             >

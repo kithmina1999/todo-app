@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { Input } from './ui/input'
-import { Button } from './ui/button'
+
+import { Button, Card, Input, Space } from 'antd'
 
 type Todo = {
     id: number
@@ -39,11 +38,8 @@ const TodoApp = () => {
     }
 
     return (
-        <Card className="w-full max-w-md mx-auto">
-            <CardHeader>
-                <CardTitle>Todo List</CardTitle>
-            </CardHeader>
-            <CardContent>
+        <Space className="w-full max-w-md mx-auto" direction='vertical'>
+            <Card title="To do app" className=''>
                 {/* Todo input section */}
                 <div className="flex space-x-2 mb-4">
                     <Input
@@ -51,7 +47,7 @@ const TodoApp = () => {
                         onChange={(e) => setNewTodo(e.target.value)}
                         placeholder="Enter a new todo"
                     />
-                    <Button onClick={handleAddTodo}>Add</Button>
+                    <Button onClick={handleAddTodo} className='bg-emerald-500 text-white'>Add</Button>
                 </div>
 
                 {/* Todo list rendering */}
@@ -67,13 +63,13 @@ const TodoApp = () => {
                                     checked={todo.completed}
                                     onChange={() => handleToggleTodo(todo.id)}
                                 />
-                                <span className={todo.completed ? 'line-through text-gray-400' : ''}>
+                                <span className={todo.completed ? 'text-gray-400 line-through' : ''}>
                                     {todo.text}
                                 </span>
                             </div>
                             <Button
-                                variant="destructive"
-                                size="sm"
+
+                                className='bg-destructive text-white hover:bg-destructive/50'
                                 onClick={() => handleDeleteTodo(todo.id)}
                             >
                                 Delete
@@ -81,8 +77,8 @@ const TodoApp = () => {
                         </div>
                     ))}
                 </div>
-            </CardContent>
-        </Card>
+            </Card>
+        </Space>
     )
 }
 
